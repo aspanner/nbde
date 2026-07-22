@@ -2,6 +2,8 @@
 
 *A walkthrough of why edge devices lose more than uptime when they leave the site—and how Clevis, Tang, and a small KVM lab make that story concrete.*
 
+![Edge security story: trusted site vs stolen device, LUKS bound to the network](images/nbde-edge-security-story.png)
+
 ---
 
 ## The edge problem isn’t only “keep the boxes online”
@@ -38,6 +40,8 @@ With the Tang pin, provisioning works roughly like this:
 4. The disk unlock key is **reconstructed on the client**. Tang never holds that key; an eavesdropper on the wire doesn’t learn it either.
 
 So Tang can speak plain **HTTP by design**. That often surprises people. Transport TLS isn’t what protects the key material—the protocol does. What Tang *does* encode as policy is: **if you can complete the exchange with this server, you’re “on the trusted network.”** Put Tang only where that statement is true (private plant/OT/lab segment, not the public internet).
+
+![NBDE architecture: Clevis client, Tang server, McCallum-Relyea over HTTP, stolen path and passphrase break-glass](images/nbde-architecture-diagram.png)
 
 You still keep a passphrase (or other pins) as **break-glass**. NBDE removes the need to type it for routine boots when the device is where it belongs.
 
