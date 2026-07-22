@@ -1,0 +1,17 @@
+# Local overrides (not committed)
+config.env
+
+# Generated cloud-init / runtime state
+cloud-init/*-user-data
+cloud-init/*-meta-data
+*.ip
+
+# Runtime lab state (if IMAGE_DIR is inside the repo)
+**/tang.env
+**/client.env
+**/active-net.env
+**/isolation.mode
+
+# Large / local artifacts (disks live under IMAGE_DIR by default)
+*.qcow2
+*.iso
